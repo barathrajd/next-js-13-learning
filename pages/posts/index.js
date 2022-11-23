@@ -1,7 +1,8 @@
 import Link from "next/link";
 import "./posts.module.css";
 
-export default function About({ posts }) {
+// Getting the prop posts from the async getStaticProps()
+export default function Posts({ posts }) {
   return (
     <div className="about">
       {posts.map((post) => (
@@ -12,7 +13,7 @@ export default function About({ posts }) {
     </div>
   );
 }
-
+// getStaticProps() provides the props for the SSG pages (Static Site generation)
 export async function getStaticProps() {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const posts = await res.json();
