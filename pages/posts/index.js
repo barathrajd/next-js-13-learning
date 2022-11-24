@@ -1,15 +1,23 @@
+import Head from "next/head";
 import Link from "next/link";
-import "./posts.module.css";
+import styles from "../../styles/Home.module.css";
 
 // Getting the prop posts from the async getStaticProps()
 export default function Posts({ posts }) {
   return (
-    <div className="about">
-      {posts.map((post) => (
-        <Link key={post.id} href={`/posts/${post.id}`}>
-          <li>{post.title}</li>
-        </Link>
-      ))}
+    <div className={styles.container}>
+      <Head>
+        <title>Posts</title>
+      </Head>
+
+      <main className={styles.main}>
+        <Link href={"/"}>Home</Link>
+        {posts.map((post) => (
+          <Link key={post.id} href={`/posts/${post.id}`}>
+            <li>{post.title}</li>
+          </Link>
+        ))}
+      </main>
     </div>
   );
 }
